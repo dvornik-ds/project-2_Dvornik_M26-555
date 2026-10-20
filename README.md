@@ -1,3 +1,4 @@
+[![asciicast](https://asciinema.org/a/87OUByHPkOeCp0tI.svg)](https://asciinema.org/a/87OUByHPkOeCp0tI)
 ## Работа с таблицами
 В базе данных реализованы команды для создания и удаления таблиц.
 Доступные команды:
