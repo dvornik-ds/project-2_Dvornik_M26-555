@@ -1,8 +1,11 @@
 import json
 import os
 
+from .constants import DATA_DIR
+
 
 def load_metadata(filepath):
+    """Загружает метаданные таблиц из JSON-файла."""
     try:
         with open(filepath, "r", encoding="utf-8") as file:
             return json.load(file)
@@ -11,11 +14,14 @@ def load_metadata(filepath):
 
 
 def save_metadata(filepath, data):
+    """Сохраняет метаданные таблиц в JSON-файл."""
     with open(filepath, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
 
+
 def load_table_data(table_name):
-    filepath = f"data/{table_name}.json"
+    """Загружает данные конкретной таблицы из её файла."""
+    filepath = f"{DATA_DIR}/{table_name}.json"
     try:
         with open(filepath, "r", encoding="utf-8") as file:
             return json.load(file)
@@ -24,8 +30,10 @@ def load_table_data(table_name):
 
 
 def save_table_data(table_name, data):
-    if not os.path.exists("data"):
-        os.makedirs("data")
-    filepath = f"data/{table_name}.json"
+    """Сохраняет данные таблицы в отдельный JSON-файл."""
+    if not os.path.exists(DATA_DIR):
+        os.makedirs(DATA_DIR)
+        
+    filepath = f"{DATA_DIR}/{table_name}.json"
     with open(filepath, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=4, ensure_ascii=False)
